@@ -1,0 +1,21 @@
+version: '3'
+
+tasks:
+  build-win:
+    cmds:
+      - GOOS=windows go build -o bin/dbcopy-win.exe . 
+  
+  build-linux:
+    cmds:
+      - GOOS=linux go build -o bin/dbcopy-linux .
+  
+  build-mac:
+    cmds:
+      - GOOS=darwin go build -o bin/dbcopy-mac .
+
+  build: 
+    deps:
+      - build-win
+      - build-linux
+      - build-mac
+
